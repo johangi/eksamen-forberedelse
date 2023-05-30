@@ -30,7 +30,7 @@ function App() {
                         />
                         <Route 
                             path='/:user'
-                            element={<User />}
+                            element={user ? <User /> : <Navigate to="/login" replace />}
                         />
                         <Route 
                             path='/veileder'
