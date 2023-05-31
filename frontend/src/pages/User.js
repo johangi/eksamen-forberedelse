@@ -80,8 +80,8 @@ const User = () => {
         <div className="center">
             <AddTodo />
             <form className="create form" onSubmit={handleEditSubmit}>
-            <input type="text" name="id" onChange={e => setId(e.target.value)} value={id} className={noId ? 'error' : ''} />
-            <input type="text" name="todo" onChange={e => setTodo(e.target.value)} value={todo} className={empty ? 'error' : ''} />
+            <input type="text" name="id" placeholder="todo id..." onChange={e => setId(e.target.value)} value={id} className={noId ? 'error' : ''} />
+            <input type="text" name="todo" placeholder="new text..." onChange={e => setTodo(e.target.value)} value={todo} className={empty ? 'error' : ''} />
             <button>Update to-do</button>
             {error && <div className="error">{error}</div>}
         </form>
