@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
 import User from './pages/User';
 import Veileder from './pages/Veileder';
+import Funksjoner from './pages/Funksjoner';
 
 function App() {
     const { user } = useAuthContext();
@@ -35,6 +36,10 @@ function App() {
                         <Route 
                             path='/veileder'
                             element={user ? <Veileder /> : <Navigate to="/" replace />}
+                        />
+                        <Route 
+                            path='/funksjoner'
+                            element={user ? <Funksjoner /> : <Navigate to="/" replace />}
                         />
                     </Routes>
                 </div>

@@ -1,6 +1,8 @@
 const Todo = require('../models/todoModel');
 const mongoose = require('mongoose');
 
+const errorMssg = 'Invalid object ID';
+
 const getTodos = async (req, res) => {
     const { user } = req.params;
 
@@ -18,9 +20,9 @@ const createTodo = async (req, res) => {
 
     let empty = false;
 
-    if(!text) {
+    if (!text) {
         empty = true;
-        return res.status(400).json({ error: 'Please enter a todo', empty})
+        return res.status(400).json({ error: 'Please enter a todo', empty })
     }
 
     try {
@@ -41,7 +43,7 @@ const deleteTodo = async (req, res) => {
 
     const todo = await Todo.findOneAndDelete({ _id: id });
 
-    if(!todo) {
+    if (!todo) {
         return res.status(400).json({ error: 'todo does not exist' });
     }
 
@@ -56,11 +58,11 @@ const completeTodo = async (req, res) => {
     }
 
     try {
-        const todo = await Todo.findOneAndUpdate({ _id: id }, { complete: true }, {new: true});
+        const todo = await Todo.findOneAndUpdate({ _id: id }, { complete: true }, { new: true });
 
         res.status(200).json(todo);
     } catch (error) {
-        res.status(400).json({error: error.message});
+        res.status(400).json({ error: error.message });
     }
 }
 
@@ -72,9 +74,32 @@ const undoTodo = async (req, res) => {
     }
 
     try {
-        const todo = await Todo.findOneAndUpdate({ _id: id }, { complete: false }, {new: true});
+        const todo = await Todo.findOneAndUpdate({ _id: id }, { complete: false }, { new: true });
 
         res.status(200).json(todo);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
+
+const updateTodo = async (req, res) => {
+    const id = req.params.id;
+    const { todo } = req.body;
+
+    console.log(todo);
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: errorMssg, noId: true });
+    }
+
+    if (!todo) {
+        return res.status(400).json({ error: 'please fill in all fields', empty: true})
+    }
+
+    try {
+        const newTodo = await Todo.findOneAndUpdate({ _id: id }, { text: todo }, { new: true });
+
+        res.status(200).json({todo: newTodo});
     } catch (error) {
         res.status(400).json({error: error.message});
     }
@@ -85,5 +110,6 @@ module.exports = {
     createTodo,
     deleteTodo,
     completeTodo,
-    undoTodo
+    undoTodo,
+    updateTodo
 }

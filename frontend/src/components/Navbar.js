@@ -18,6 +18,7 @@ const Navbar = () => {
                 <nav>
                     {user && (
                         <div>
+                        <Link to="/funksjoner" className="white">Funksjoner</Link>
                         <Link to="/veileder" className="white">Veileder</Link>
                             <Link to={"/" + user.email} className="white">{user.email}</Link>
                             <button onClick={handleClick}>Log out</button>

@@ -1,6 +1,6 @@
 import { useTodosContext } from "../hooks/useTodosContext";
 
-const TodoDetails = ({ todo }) => {
+const TodoDetails = ({ todo, handleEdit }) => {
     const { dispatch } = useTodosContext();
     const userItem = localStorage.getItem('user');
     const user = JSON.parse(userItem);
@@ -65,8 +65,9 @@ const TodoDetails = ({ todo }) => {
         <div className={`shoe-details ${todoClassName}`} id={todo._id}>
             <h3>{todo.text}</h3>
             {!todo.complete && <span className="material-symbols-outlined" onClick={handleDone}>done</span>}
-            {todo.complete && <span class="material-symbols-outlined" onClick={handleUndo}>close</span>}
+            {todo.complete && <span className="material-symbols-outlined" onClick={handleUndo}>close</span>}
             <span className="material-symbols-outlined" onClick={handleDelete}>delete</span>
+            <span className="material-symbols-outlined" onClick={handleEdit} data-id={todo._id}>edit</span>
         </div>
      );
 }
