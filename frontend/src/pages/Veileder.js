@@ -50,6 +50,14 @@ const Veileder = () => {
             <hr />
             <section className="auth">
                 <h1>Autentisering & Autorisering</h1>
+                <h3>Hva er autentisering?</h3>
+                <p>
+                    Autentisering er en prosess som verifiserer identiteten til en bruker. For eksempel innlogging.
+                </p>
+                <h3>Hva er autorisering?</h3>
+                <p>
+                    Autorisering er en prosess som sjekker hva en autentisert bruker har tilgang til, for eksempel å lage en todo.
+                </p>
                 <h3>Hvorfor autentisere og autorisere?</h3>
                 <p>
                     De fleste nettsider & maskiner inneholder sensitiv informasjon. For å hindre at denne informasjonen blir sett av de
