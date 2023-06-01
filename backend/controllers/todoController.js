@@ -86,8 +86,6 @@ const updateTodo = async (req, res) => {
     const id = req.params.id;
     const { todo } = req.body;
 
-    console.log(todo);
-
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ error: errorMssg, noId: true });
     }
