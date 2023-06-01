@@ -61,7 +61,8 @@ const Veileder = () => {
                 <h3>Hvorfor autentisere og autorisere?</h3>
                 <p>
                     De fleste nettsider & maskiner inneholder sensitiv informasjon. For å hindre at denne informasjonen blir sett av de
-                    som ikke skal se det, vil du autentisere brukere før de får tilgang til denne informasjonen.
+                    som ikke skal se det, vil du autentisere brukeren, og sjekke at de har lov til å se informasjonen før de får tilgang 
+                    til denne informasjonen.
                 </p>
                 <h3>Hvorfor trenger man auth på en todo-liste?</h3>
                 <p>
